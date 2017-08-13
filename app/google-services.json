@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "193019076660",
+    "firebase_url": "https://chattingtest-ba785.firebaseio.com",
+    "project_id": "chattingtest-ba785",
+    "storage_bucket": "chattingtest-ba785.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193019076660:android:233624c0bf71e796",
+        "android_client_info": {
+          "package_name": "com.example.kimhun.chattingtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193019076660-b0cf5pjov6blprnn0mammjbcjvq7ai5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKF70KM6clrBej3WhrotZYgmPnVfq0Hec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
