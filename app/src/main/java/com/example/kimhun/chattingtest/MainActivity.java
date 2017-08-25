@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> mAdapter;
     private ListView mListView;
     private EditText mEditMessage;
-    private Button mButton;
+    private Button letterButton;
+    private Button imageButton;
 
     private String userName;
 
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.list_message);
         mEditMessage = (EditText) findViewById(R.id.edit_message);
-        mButton = (Button) findViewById(R.id.btn_send);
+        letterButton = (Button) findViewById(R.id.btn_send);
+        imageButton = (Button) findViewById(R.id.btn_image);
 
         userName = "user" + new Random().nextInt(10000);
 
@@ -45,12 +47,19 @@ public class MainActivity extends AppCompatActivity {
 
         mListView.setAdapter(mAdapter);
 
-        mButton.setOnClickListener(new View.OnClickListener() {
+        letterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChatData chatData = new ChatData(userName, mEditMessage.getText().toString());
-                firebaseManager.pushData(chatData);
+                Message message = new Letter(userName, mEditMessage.getText().toString());
+                firebaseManager.pushData(message);
                 mEditMessage.setText("");
+            }
+        });
+
+        imageButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

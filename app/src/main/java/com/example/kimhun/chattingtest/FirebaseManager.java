@@ -23,8 +23,8 @@ public class FirebaseManager {
         mDatabaseReference.child("message").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                ChatData chatData = dataSnapshot.getValue(ChatData.class);
-                mAdapter.add(chatData.getUserName() + ":" +  chatData.getMessage());
+                Message message = dataSnapshot.getValue(Message.class);
+                mAdapter.add(message.getUserName() + ":" +  message.getMessage());
             }
 
             @Override
@@ -48,7 +48,7 @@ public class FirebaseManager {
             }
         });
     }
-    public void pushData(ChatData data){
+    public void pushData(Message data){
         mDatabaseReference.child("message").push().setValue(data);
     }
 
