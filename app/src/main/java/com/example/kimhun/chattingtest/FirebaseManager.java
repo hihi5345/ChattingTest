@@ -1,7 +1,5 @@
 package com.example.kimhun.chattingtest;
 
-import android.widget.ArrayAdapter;
-
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,14 +15,15 @@ public class FirebaseManager {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
 
-    public void initFirebaseDatabase(final ArrayAdapter<String> mAdapter) {
+    public void initFirebaseDatabase(final ListViewAdapter mAdapter) {
+
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
         mDatabaseReference.child("message").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Message message = dataSnapshot.getValue(Message.class);
-                mAdapter.add(message.getUserName() + ":" +  message.getMessage());
+                Letter message = dataSnapshot.getValue(Letter.class);
+                mAdapter.addItem(null, message.getUserName() + ":" +  message.getMessage());
             }
 
             @Override
@@ -48,7 +47,7 @@ public class FirebaseManager {
             }
         });
     }
-    public void pushData(Message data){
+    public void pushData(Letter data){
         mDatabaseReference.child("message").push().setValue(data);
     }
 

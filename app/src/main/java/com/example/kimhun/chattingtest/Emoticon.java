@@ -1,20 +1,19 @@
 package com.example.kimhun.chattingtest;
 
 /**
- * Created by kimhun on 2017-08-19.
+ * Created by kimhun on 2017-08-26.
  */
 
-public class Letter implements Message {
+public class Emoticon implements Message {
+
     private String userName;
-    private String message;
+    private String emoticonURL;
     private String type;
 
-    public Letter(){}
-
-    public Letter(String userName, String message){
+    public Emoticon(String userName, String emotionURL){
         this.userName = userName;
-        this.message = message;
-        this.type = "Letter";
+        this.emoticonURL = emotionURL;
+        type = "emoticon";
     }
 
     @Override
@@ -24,7 +23,7 @@ public class Letter implements Message {
 
     @Override
     public String getMessage() {
-        return message;
+        return emoticonURL;
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Letter implements Message {
     }
 
     @Override
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessage(String emoticonURL) {
+        this.emoticonURL = emoticonURL;
     }
 }

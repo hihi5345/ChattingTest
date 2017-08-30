@@ -3,7 +3,6 @@ package com.example.kimhun.chattingtest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -14,7 +13,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayAdapter<String> mAdapter;
+    private ListViewAdapter mAdapter;
     private ListView mListView;
     private EditText mEditMessage;
     private Button letterButton;
@@ -30,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initviews();
+        initViews();
         firebaseManager.initFirebaseDatabase(mAdapter);
     }
 
-    private void initviews(){
+    private void initViews(){
 
         mListView = (ListView) findViewById(R.id.list_message);
         mEditMessage = (EditText) findViewById(R.id.edit_message);
@@ -43,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
         userName = "user" + new Random().nextInt(10000);
 
-        mAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, android.R.id.text1);
+        mAdapter = new ListViewAdapter();
 
         mListView.setAdapter(mAdapter);
 
         letterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Message message = new Letter(userName, mEditMessage.getText().toString());
+                Letter message = new Letter(userName, mEditMessage.getText().toString());
                 firebaseManager.pushData(message);
                 mEditMessage.setText("");
             }
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
 }
